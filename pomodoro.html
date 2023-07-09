@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id='app'></div>
+
+    <script>
+        let duration = 25 * 60;
+        const app = document.getElementById('app');
+
+        const header = document.createElement('h1');
+        header.innerText = `${duration / 60 < 10 ? '0' : ''}${parseInt(duration / 60)}:${duration % 60 < 10 ? '0' : ''}${duration % 60}`;
+        app.appendChild(header);
+
+        const startButton = document.createElement('button');
+        startButton.onclick = startCountDown;
+        startButton.innerText = 'START';
+        app.appendChild(startButton);
+
+        const stopButton = document.createElement('button');
+        stopButton.onclick = stopCountDown;
+        stopButton.innerText = 'STOP';
+        app.appendChild(stopButton);
+
+        let interval;
+
+        function startCountDown() {
+            interval = setInterval(countDown, 1000);
+        }
+
+        function stopCountDown() {
+            clearInterval(interval);
+        }
+
+        function countDown() {
+            duration--;
+
+            let min = parseInt(duration / 60);
+            let sec = duration % 60;
+
+            if (sec < 10) {
+                sec = `0${sec}`;
+            }
+
+            if (min < 10) {
+                min = `0${min}`;
+            }
+
+            header.innerText = `${min}:${sec}`;
+
+            if (duration === 0) {
+                stopCountDown();
+            }
+
+        }
+    </script>
+</body>
+
+</html>

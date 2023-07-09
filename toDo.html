@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id='app'></div>
+
+    <script>
+        let num = 25;
+        const app = document.getElementById('app');
+
+        const header = document.createElement('h1');
+        header.innerText = num;
+        app.appendChild(header);
+
+        const startButton = document.createElement('button');
+        startButton.id = 'startButt';
+        startButton.innerText = 'START';
+        
+        startButton.onclick = start;
+        app.appendChild(startButton);
+
+        let interval;
+
+        function decrease(){
+            num--;
+            header.innerText = num;
+
+            if (num == 0) {
+                stop();
+                startButton.disabled = true;
+                header.innerText = 'DONE';
+            }
+        }
+
+        function start(){
+           interval = setInterval(decrease, 1000);
+        }
+
+        function stop(){
+           clearInterval(interval);
+        }
+
+
+        // ----------------------------------------
+        // const button1 = document.createElement('button');
+        // button1.id = 'butt1';
+        // button1.innerText = 'Decrease';
+        // button1.onclick = decrease;
+        // app.appendChild(button1);
+    
+        // const button2 = document.createElement('button');   
+        // button2.id = 'butt2';  
+        // button2.innerText = 'Increase'; 
+        // button2.onclick = increase;  
+        // app.appendChild(button2);
+
+        // const header = document.createElement('h1');
+        // header.innerText = num;
+        // app.appendChild(header);
+
+        // function decrease(){
+        //     num--;
+        //     header.innerText = num;
+        // }
+
+        // function increase(){
+        //     num++;
+        //     header.innerText = num;
+        // }
+
+        // let interval = setInterval(increase, 1000);
+        
+        // const stopButton = document.createElement('button');
+        // stopButton.innerText = 'STOP';
+        // stopButton.onclick = stop;  
+        // app.appendChild(stopButton);
+
+        // const contButton = document.createElement('button');
+        // contButton.innerText = 'CONTINUE';
+        // contButton.onclick = cont;  
+        // app.appendChild(contButton);
+
+        // function stop(){
+        //    clearInterval(interval);
+        // }
+
+        // function cont(){
+        //     interval = setInterval(increase, 1000);
+        // }
+
+
+
+        // --------------------
+        // const app = document.getElementById('app');
+
+        // const ul = document.createElement('ul');
+        // ul.id = 'my-ul';
+        // app.appendChild(ul);
+
+        // const button = document.createElement('button');
+        // button.innerText = 'Add!';
+        // button.onclick = add;
+        // app.appendChild(button);
+
+
+        // const input = document.createElement('input');
+        // input.id = 'my-input';
+        // app.appendChild(input);
+
+        // function add(){
+        //     const li = document.createElement('li');
+        //     const ul = document.getElementById('my-ul');
+        //     const input = document.getElementById('my-input');
+        //     li.innerText = input.value;
+        //     ul.appendChild(li);
+        //     input.value = '';
+        // }
+        
+    </script>
+</body>
+</html>
